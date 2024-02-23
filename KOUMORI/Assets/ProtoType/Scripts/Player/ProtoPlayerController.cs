@@ -150,7 +150,7 @@ public class ProtoPlayerController : MonoBehaviour
         }
     }
 
-    public async void OnStartCool()
+    public async UniTask OnStartCool()
     {
         if (cooldown) return;
         var token=this.GetCancellationTokenOnDestroy();

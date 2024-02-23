@@ -6,14 +6,28 @@ public class ProtoAttackPower : MonoBehaviour,IAttack
 {
     [SerializeField] int attackPower = 1;
 
+    bool isAttack = false;
+
     public int Attack()
     {
+        if (!isAttack) return 0;
+
         return attackPower;
     }
 
     public void AddPower(int power)
     {
         attackPower += power;
+    }
+
+    public void AttackStart()
+    {
+        isAttack = true;
+    }
+
+    public void AttackEnd()
+    {
+        isAttack = false;
     }
 
     void OnGUI()

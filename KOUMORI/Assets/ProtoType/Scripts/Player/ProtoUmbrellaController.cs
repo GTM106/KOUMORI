@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
 
 public class ProtoUmbrellaController : MonoBehaviour
 {
@@ -13,21 +14,30 @@ public class ProtoUmbrellaController : MonoBehaviour
 
     Vector2 _inputValue;
     bool isPressed;
+
+    bool isCool = false;
+    ProtoAttackPower _attackPower;
+
     /// <summary>
     /// éPAction(PlayerInputë§Ç©ÇÁåƒÇŒÇÍÇÈ)
     /// </summary>
-    public void OnUmbrella(InputAction.CallbackContext context)
+    public async void OnUmbrella(InputAction.CallbackContext context)
     {
-        if(context.phase!=InputActionPhase.Performed) { return; }
+        if (context.phase != InputActionPhase.Performed) { return; }
+        if (isCool) { return; }
 
         // ì¸óÕílÇï€éùÇµÇƒÇ®Ç≠
         _inputValue = context.ReadValue<Vector2>();
 
         if (!isPressed)
         {
-            if(playerController.enabled)
+            if (playerController.enabled)
             {
-                playerController.OnStartCool();
+                isCool = true;
+                _attackPower.AttackStart();
+                await playerController.OnStartCool();
+                isCool = false;
+                _attackPower.AttackEnd();
             }
         }
     }
@@ -35,7 +45,8 @@ public class ProtoUmbrellaController : MonoBehaviour
     private void Awake()
     {
         playerController = FindAnyObjectByType<ProtoPlayerController>();
-        openPlayerController= FindAnyObjectByType<ProtoOpenPlayerController>();
+        openPlayerController = FindAnyObjectByType<ProtoOpenPlayerController>();
+        _attackPower = FindAnyObjectByType<ProtoAttackPower>();
     }
 
     private void Update()
@@ -47,11 +58,15 @@ public class ProtoUmbrellaController : MonoBehaviour
             degree += 360;
         }
 
-        if(_inputValue==Vector2.zero)
+        if (_inputValue == Vector2.zero)
         {
             degree = !isPressed ? -150 : 0;
         }
+
+        if (!isCool) return;
+
         centerTransform.localRotation = Quaternion.Euler(0, 0, -degree);
+
 
         isPressed = Keyboard.current.rKey.isPressed;
 

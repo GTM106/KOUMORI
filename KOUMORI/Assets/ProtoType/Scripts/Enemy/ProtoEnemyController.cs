@@ -16,7 +16,7 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
     [SerializeField] float moveSpeed;
     [SerializeField] float flinchTime;
     [SerializeField] Transform target;
-
+    [SerializeField] float searchRange;
 
     bool flinch = false;
 
@@ -29,6 +29,8 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
 
     private void Update()
     {
+        if (searchRange < Vector3.Distance(target.transform.position, transform.position)) return;
+
         Quaternion lookRotation = Quaternion.LookRotation(target.transform.position - transform.position, Vector3.up);
 
         lookRotation.z = 0;

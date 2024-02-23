@@ -275,6 +275,7 @@ MonoBehaviour:
   moveSpeed: 3
   flinchTime: 1
   target: {fileID: 118395915}
+  searchRange: 5
 --- !u!1 &98699678
 GameObject:
   m_ObjectHideFlags: 0
