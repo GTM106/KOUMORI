@@ -15,12 +15,29 @@ public class ProtoStickUIController : MonoBehaviour
     [SerializeField] float moveRange;
 
   [SerializeField]  GameObject subCloth;
+     ProtoSubClothController subClothController;
     Vector3 startPos;
     Vector3 movePos;
     private void Awake()
     {
         image = GetComponent<Image>();
+        subClothController = FindAnyObjectByType<ProtoSubClothController>();
+        subClothController.OnDecide += SubClothController_OnDecide;
         startPos = image.transform.localPosition;
+    }
+
+    private void OnDestroy()
+    {
+        subClothController.OnDecide -= SubClothController_OnDecide;
+
+    }
+
+    private void SubClothController_OnDecide()
+    {
+        clothControl.action.Enable();
+        clothRotation.action.Disable();
+        subCloth.SetActive(false);
+        image.transform.localPosition = startPos;
     }
 
     private void Update()

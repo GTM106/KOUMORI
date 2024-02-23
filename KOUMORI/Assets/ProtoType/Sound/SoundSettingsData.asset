@@ -46,7 +46,7 @@ MonoBehaviour:
       _source: 4
     - _key: SE005_ClothOpenClose
       _value:
-        _clip: {fileID: 0}
+        _clip: {fileID: 8300000, guid: 3251d8d9da22ca3478a9a21919027e8a, type: 3}
         _volume: 1
         _pitch: 1
       _source: 5
@@ -58,7 +58,7 @@ MonoBehaviour:
       _source: 6
     - _key: SE007_ClothDecide
       _value:
-        _clip: {fileID: 0}
+        _clip: {fileID: 8300000, guid: 96b4f47422bd33d4fa4f73ecc540782e, type: 3}
         _volume: 1
         _pitch: 1
       _source: 7
