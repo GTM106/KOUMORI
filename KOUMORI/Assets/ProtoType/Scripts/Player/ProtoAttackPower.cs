@@ -7,6 +7,7 @@ public class ProtoAttackPower : MonoBehaviour,IAttack
     [SerializeField] int attackPower = 1;
 
     bool isAttack = false;
+    [SerializeField] AudioSource audioSource;
 
     public int Attack()
     {
@@ -23,6 +24,7 @@ public class ProtoAttackPower : MonoBehaviour,IAttack
     public void AttackStart()
     {
         isAttack = true;
+        SoundManager.Instance.PlaySE(audioSource, SoundSource.SE002_Attack, 0.0f);
     }
 
     public void AttackEnd()

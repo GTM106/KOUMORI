@@ -22,26 +22,26 @@ MonoBehaviour:
       _source: 0
     - _key: SE001_Jump
       _value:
-        _clip: {fileID: 0}
-        _volume: 1
+        _clip: {fileID: 8300000, guid: 3e9879ed46b28344b85bb3e9d40a3e83, type: 3}
+        _volume: 0.074
         _pitch: 1
       _source: 1
     - _key: SE002_Attack
       _value:
-        _clip: {fileID: 0}
-        _volume: 1
+        _clip: {fileID: 8300000, guid: 8c5114a3d6d7e9a47b6c2e14f5a20cac, type: 3}
+        _volume: 0.5
         _pitch: 1
       _source: 2
     - _key: SE003_Hit
       _value:
-        _clip: {fileID: 0}
-        _volume: 1
+        _clip: {fileID: 8300000, guid: 8ffd32731a738144aa84de05a6f87eaa, type: 3}
+        _volume: 0.593
         _pitch: 1
       _source: 3
     - _key: SE004_Guard
       _value:
-        _clip: {fileID: 0}
-        _volume: 1
+        _clip: {fileID: 8300000, guid: 96b4f47422bd33d4fa4f73ecc540782e, type: 3}
+        _volume: 0.667
         _pitch: 1
       _source: 4
     - _key: SE005_ClothOpenClose

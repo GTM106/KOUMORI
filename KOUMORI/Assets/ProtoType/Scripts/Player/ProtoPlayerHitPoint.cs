@@ -14,6 +14,8 @@ public class ProtoPlayerHitPoint : MonoBehaviour
     bool invincible = false;
     [SerializeField, Header("無敵時間")] float _invincibleDuration = 3f;
     [SerializeField] MeshRenderer _renderer;
+    [SerializeField] AudioSource hitAudio;
+
     private void Awake()
     {
         hitPoint = new(initHP, maxHP, OnDead);
@@ -30,11 +32,10 @@ public class ProtoPlayerHitPoint : MonoBehaviour
         if(invincible) { return; }
         if (hitPoint.IsDead()) return;
         hitPoint.TakeDamage(1);
+        SoundManager.Instance.PlaySE(hitAudio, SoundSource.SE003_Hit, 0.0f);
         if (hitPoint.IsDead()) return;
 
         Invincible();
-
-        // hit.gameObjectで衝突したオブジェクト情報が得られる
     }
 
     private async void Invincible()
@@ -69,6 +70,7 @@ public class ProtoPlayerHitPoint : MonoBehaviour
         }
         if (invincible) return;
         hitPoint.TakeDamage(damage);
+        SoundManager.Instance.PlaySE(hitAudio, SoundSource.SE003_Hit, 0.0f);
 
     }
 }
