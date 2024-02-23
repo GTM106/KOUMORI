@@ -243,4 +243,9 @@ public class SoundManager : MonoBehaviour
             source.volume = Mathf.Max(firstVolume * (1f - (fadeTime / duration)), 0f);
         }
     }
+
+    internal void PlaySE(object hitAudio, SoundSource sE003_Hit, float v)
+    {
+        throw new NotImplementedException();
+    }
 }

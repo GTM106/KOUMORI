@@ -21,6 +21,7 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
     bool flinch = false;
 
     HitPoint hitPoint;
+    [SerializeField] AudioSource hitAudio;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
         {
             int damage = attack.Attack();
             if(damage <= 0) { return; }
+            SoundManager.Instance.PlaySE(hitAudio, SoundSource.SE003_Hit, 0.0f);
 
             hitPoint.TakeDamage(damage);
 
