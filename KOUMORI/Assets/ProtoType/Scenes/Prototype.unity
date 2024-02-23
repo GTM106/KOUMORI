@@ -452,8 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &273320434
@@ -780,8 +780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &502331844
@@ -926,8 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &544859130
@@ -1072,8 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &614159495
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
+  attackPower: 2
   hitPoint: 1
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
@@ -1727,8 +1727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &859011555
@@ -2284,6 +2284,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0ce970ed-bc40-4371-b045-678e15c0c190
     m_ActionName: Player/UmbrellaOpenClose[/XInputControllerWindows/rightTrigger,/SwitchProControllerHID/rightTrigger,/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c16c41a3-35a0-447d-b20d-af15c11315d9
+    m_ActionName: Player/ClothControl[/XInputControllerWindows/rightStick,/SwitchProControllerHID/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f22c90f8-e1a5-4591-af84-ccdc356b104b
+    m_ActionName: Player/ClothUIOpen[/XInputControllerWindows/leftShoulder,/SwitchProControllerHID/leftShoulder,/XInputControllerWindows/rightShoulder,/SwitchProControllerHID/rightShoulder,/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 259098aa-4f0b-4cb3-ab35-52e95cdeb5a0
+    m_ActionName: Player/ClothUIClose[/XInputControllerWindows/leftShoulder,/SwitchProControllerHID/leftShoulder,/XInputControllerWindows/rightShoulder,/SwitchProControllerHID/rightShoulder,/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a1571a6b-44d2-41ae-b21a-8bd62a3b7e9d
+    m_ActionName: Player/ClothRotation[/XInputControllerWindows/rightStick,/SwitchProControllerHID/rightStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2978,8 +2994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &1236708460
@@ -3349,8 +3365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &1546452606
@@ -3495,8 +3511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &1556106198
@@ -3710,6 +3726,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothBaseList:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1880266193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3884,8 +3905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &2053359709
@@ -4105,8 +4126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1 &2100596019
@@ -4359,8 +4380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  hitPoint: 1
+  attackPower: 2
+  hitPoint: 2
   clothName: Normal Cloth
   explanatoryNote: It's just a piece of fabric.
 --- !u!1660057539 &9223372036854775807

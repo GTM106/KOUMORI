@@ -23,6 +23,7 @@ public class ProtoClothController : MonoBehaviour
 
     public void AddCloth(int index, ProtoClothBase cloth)
     {
+
         if (index < 0) return;
         if (index >= clothBaseList.Count) return;
 
@@ -34,7 +35,6 @@ public class ProtoClothController : MonoBehaviour
         if (cloth == null) return;
 
         clothBaseList[index] = cloth;
-        print("a");
         hitPoint.Damage(-cloth.hitPoint);
     }
 
