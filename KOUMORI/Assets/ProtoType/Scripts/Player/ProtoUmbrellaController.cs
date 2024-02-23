@@ -23,7 +23,7 @@ public class ProtoUmbrellaController : MonoBehaviour
     /// </summary>
     public async void OnUmbrella(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Performed) { return; }
+        if (context.phase != InputActionPhase.Performed) { _inputValue = Vector2.zero; return; }
         if (isCool) { return; }
 
         // ì¸óÕílÇï€éùÇµÇƒÇ®Ç≠
@@ -33,6 +33,9 @@ public class ProtoUmbrellaController : MonoBehaviour
         {
             if (playerController.enabled)
             {
+                if(_inputValue==Vector2.zero) { return; }
+                if(isCool) { return; }
+                Rotate();
                 isCool = true;
                 _attackPower.AttackStart();
                 await playerController.OnStartCool();
@@ -51,22 +54,14 @@ public class ProtoUmbrellaController : MonoBehaviour
 
     private void Update()
     {
-        float degree = Mathf.Atan2(_inputValue.x, _inputValue.y) * Mathf.Rad2Deg;
+        Rotate();
 
-        if (degree < 0)
-        {
-            degree += 360;
-        }
+        OpenClose();
+    }
 
-        if (_inputValue == Vector2.zero)
-        {
-            degree = !isPressed ? -150 : 0;
-        }
-
-        if (!isCool) return;
-
-        centerTransform.localRotation = Quaternion.Euler(0, 0, -degree);
-
+    private void OpenClose()
+    {
+        if(isCool) { return; }
 
         isPressed = Keyboard.current.rKey.isPressed;
 
@@ -84,5 +79,24 @@ public class ProtoUmbrellaController : MonoBehaviour
 
         playerController.enabled = !isPressed;
         openPlayerController.enabled = isPressed;
+    }
+
+    private void Rotate()
+    {
+        float degree = Mathf.Atan2(_inputValue.x, _inputValue.y) * Mathf.Rad2Deg;
+
+        if (degree < 0)
+        {
+            degree += 360;
+        }
+
+        if (isCool) return;
+
+        if (_inputValue == Vector2.zero)
+        {
+            degree = !isPressed ? -150 : 0;
+        }
+
+        centerTransform.localRotation = Quaternion.Euler(0, 0, -degree);
     }
 }

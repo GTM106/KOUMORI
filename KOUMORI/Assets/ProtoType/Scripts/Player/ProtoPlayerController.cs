@@ -43,6 +43,7 @@ public class ProtoPlayerController : MonoBehaviour
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
+        if(context.phase!=InputActionPhase.Performed) { return; }
         if(cooldown) { return; }
 
         // “ü—Í’l‚ğ•Û‚µ‚Ä‚¨‚­
@@ -90,6 +91,13 @@ public class ProtoPlayerController : MonoBehaviour
 
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
+        if (cooldown) return;
+
         var isGrounded = _characterController.isGrounded;
 
         if (isGrounded && !_isGroundedPrev)

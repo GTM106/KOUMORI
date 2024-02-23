@@ -50,7 +50,10 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
 
         if(other.TryGetComponent(out IAttack attack))
         {
-            hitPoint.TakeDamage(attack.Attack());
+            int damage = attack.Attack();
+            if(damage <= 0) { return; }
+
+            hitPoint.TakeDamage(damage);
 
             Flinch();
         }

@@ -397,7 +397,7 @@ MonoBehaviour:
   _fallSpeed: 10
   _initFallSpeed: 2
   _targetCamera: {fileID: 1181896026}
-  _attackCoolTime: 0.1
+  _attackCoolTime: 1
   _modelTransform: {fileID: 759014056}
 --- !u!114 &118395917
 MonoBehaviour:
