@@ -6,10 +6,11 @@ public class ProtoClothController : MonoBehaviour
 {
     [SerializeField] List<ProtoClothBase> clothBaseList;
     ProtoPlayerHitPoint hitPoint;
-
+    ProtoAttackPower power;
     private void Awake()
     {
         hitPoint = FindAnyObjectByType<ProtoPlayerHitPoint>();
+        power = FindAnyObjectByType<ProtoAttackPower>();
     }
 
     private void Start()
@@ -30,12 +31,14 @@ public class ProtoClothController : MonoBehaviour
         if (clothBaseList[index]!=null)
         {
             hitPoint.Damage(clothBaseList[index].hitPoint);
+            power.AddPower(-clothBaseList[index].attackPower);
         }
 
         if (cloth == null) return;
 
         clothBaseList[index] = cloth;
         hitPoint.Damage(-cloth.hitPoint);
+        power.AddPower(cloth.attackPower);
     }
 
     public void RemoveCloth(ProtoClothBase cloth)
