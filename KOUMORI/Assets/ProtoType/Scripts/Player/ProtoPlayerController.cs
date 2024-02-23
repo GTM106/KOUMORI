@@ -160,6 +160,4 @@ public class ProtoPlayerController : MonoBehaviour
         cooldown = false;
 
     }
-
-    
 }

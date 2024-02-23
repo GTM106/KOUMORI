@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "f104057e-5c02-4506-8ef2-86e76ae0462a",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "SnapDirection",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -56,6 +56,42 @@
                     "id": "0ce970ed-bc40-4371-b045-678e15c0c190",
                     "expectedControlType": "Button",
                     "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ClothControl",
+                    "type": "Value",
+                    "id": "c16c41a3-35a0-447d-b20d-af15c11315d9",
+                    "expectedControlType": "Vector2",
+                    "processors": "SnapDirection(digitalNormalized=true,snapDirectionCount=6)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ClothUIOpen",
+                    "type": "Button",
+                    "id": "f22c90f8-e1a5-4591-af84-ccdc356b104b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClothUIClose",
+                    "type": "Button",
+                    "id": "259098aa-4f0b-4cb3-ab35-52e95cdeb5a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClothRotation",
+                    "type": "Value",
+                    "id": "a1571a6b-44d2-41ae-b21a-8bd62a3b7e9d",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=0.6,max=1)",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -344,6 +380,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "UmbrellaOpenClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25e2227c-2103-4210-ac88-aa71508475d1",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67e120a3-5b4c-4c52-8f6b-aa765e1b1bfe",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96e3401b-0b1e-49c8-9693-f2d6a10b3d23",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "893dd789-1cf4-4527-82c9-f177492e2658",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ClothControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e67a433-3575-4db9-8af9-8d1eb76e9392",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2bfa0b5d-828e-402d-89cc-ec6c720cf1da",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70869e60-fe6b-4aab-ba72-371667790f04",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb7d8bd9-8fea-47c8-a14f-8ff5b6a1cf2b",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "SnapDirection(snapDirectionCount=6)",
+                    "groups": "",
+                    "action": "ClothRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

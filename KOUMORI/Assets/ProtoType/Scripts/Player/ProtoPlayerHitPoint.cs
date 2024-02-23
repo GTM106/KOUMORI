@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class ProtoPlayerHitPoint : MonoBehaviour
@@ -28,7 +27,6 @@ public class ProtoPlayerHitPoint : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Ground")) return;
-        print("called");
         if(invincible) { return; }
         if (hitPoint.IsDead()) return;
         hitPoint.TakeDamage(1);
@@ -57,5 +55,20 @@ public class ProtoPlayerHitPoint : MonoBehaviour
 
         invincible = false;
     }
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 200, 20), "HP: " + hitPoint.GetCurrentHP().ToString()); // HP‚ð•\Ž¦
+    }
 
+    public void Damage(int damage)
+    {
+        if(damage < 0)
+        {
+            hitPoint.TakeDamage(damage);
+            return;
+        }
+        if (invincible) return;
+        hitPoint.TakeDamage(damage);
+
+    }
 }
