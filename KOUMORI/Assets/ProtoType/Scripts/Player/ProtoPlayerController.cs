@@ -26,7 +26,7 @@ public class ProtoPlayerController : MonoBehaviour
     [Header("攻撃クールタイム"), SerializeField] float _attackCoolTime = 2f;
 
     [SerializeField] Transform _modelTransform;
-    
+
     private CharacterController _characterController;
 
     private Vector2 _inputMove;
@@ -36,14 +36,16 @@ public class ProtoPlayerController : MonoBehaviour
 
     bool _wasStickUp;
 
-    bool cooldown=false;
+    bool cooldown = false;
+    [SerializeField] AudioSource jumpAudio;
 
     /// <summary>
     /// 移動Action(PlayerInput側から呼ばれる)
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(cooldown) { return; }
+        if (context.phase != InputActionPhase.Performed) { _inputMove = Vector2.zero; return; }
+        if (cooldown) { return; }
 
         // 入力値を保持しておく
         _inputMove = context.ReadValue<Vector2>();
@@ -58,6 +60,7 @@ public class ProtoPlayerController : MonoBehaviour
 
             // 鉛直上向きに速度を与える
             _verticalVelocity = _jumpSpeed;
+            SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
             _wasStickUp = true;
         }
         else { _wasStickUp = false; }
@@ -70,6 +73,7 @@ public class ProtoPlayerController : MonoBehaviour
     {
         // ボタンが押された瞬間かつ着地している時だけ処理
         if (!context.performed || !_characterController.isGrounded) return;
+        SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
 
         // 鉛直上向きに速度を与える
         _verticalVelocity = _jumpSpeed;
@@ -90,6 +94,13 @@ public class ProtoPlayerController : MonoBehaviour
 
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
+        if (cooldown) return;
+
         var isGrounded = _characterController.isGrounded;
 
         if (isGrounded && !_isGroundedPrev)
@@ -150,10 +161,10 @@ public class ProtoPlayerController : MonoBehaviour
         }
     }
 
-    public async void OnStartCool()
+    public async UniTask OnStartCool()
     {
         if (cooldown) return;
-        var token=this.GetCancellationTokenOnDestroy();
+        var token = this.GetCancellationTokenOnDestroy();
         cooldown = true;
         _inputMove = Vector2.zero;
         await UniTask.WaitForSeconds(_attackCoolTime, false, PlayerLoopTiming.FixedUpdate, token);

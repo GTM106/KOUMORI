@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ProtoSubClothContoller : MonoBehaviour
+public class ProtoSubClothController : MonoBehaviour
 {
     [SerializeField] InputActionReference reference;
     [SerializeField] List<Image> images;
     ProtoMainClothController protoMainClothController;
-    ProtoClothController protoClothController;
-  [SerializeField
-        ]AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource decideAudio;
+    [SerializeField] TMP_Text nameText;
+    [SerializeField] TMP_Text noteText;
+
+    public event Action OnDecide;
+
     float first = -1f;
     float prebDig = 0f;
 
@@ -25,7 +30,12 @@ public class ProtoSubClothContoller : MonoBehaviour
     {
         reference.action.performed += Action_performed;
         protoMainClothController = FindAnyObjectByType<ProtoMainClothController>();
-        protoClothController= FindAnyObjectByType<ProtoClothController>();
+    }
+
+    private void OnEnable()
+    {
+        nameText.text = "";
+        noteText.text = "";
     }
 
     private void OnDestroy()
@@ -53,24 +63,45 @@ public class ProtoSubClothContoller : MonoBehaviour
 
             if (sa < 0f) { sa -= 1f; }
             else if (sa > 0f) { sa += 1f; }
-            else { return; }
             int num = (int)(sa / V % max);
             //print("sa : " + sa);
             //print("num : " + num);
 
             Sprite sp = images[(index - num) % max].sprite;
             protoMainClothController.ChangeSprite(sp, images[(index - num) % max].GetComponent<ProtoClothBase>());
+            nameText.text = "";
+            noteText.text = "";
+
+            SoundManager.Instance.PlaySE(decideAudio, SoundSource.SE007_ClothDecide, 0f);
+            OnDecide?.Invoke();
             first = -1f;
         }
         else
         {
+            float sa = prebDig - first;
+
+            if (sa < 0f) { sa -= 1f; }
+            else if (sa > 0f) { sa += 1f; }
+            int num = (int)(sa / V % max);
+            //print("sa : " + sa);
+            //print("num : " + num);
+            ProtoClothBase cloth = images[(index - num) % max].GetComponent<ProtoClothBase>();
+            if(cloth!= null)
+            {
+                string name = cloth.clothName;
+                string explanatoryNote = cloth.explanatoryNote;
+                nameText.text = name;
+                noteText.text = explanatoryNote;
+
+            }
+
             //print("dig : " + degree + "\nfirst : " + first);
         }
 
 
         if (Mathf.Approximately(first, -1f) && !Mathf.Approximately(degree, 0f)) first = degree;
 
-        if(prebDig!=degree) { SoundManager.Instance.PlaySE(audioSource, SoundSource.SE006_ClothCursor); }
+        if (prebDig != degree) { SoundManager.Instance.PlaySE(audioSource, SoundSource.SE006_ClothCursor); }
         prebDig = degree;
     }
 }

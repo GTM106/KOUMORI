@@ -16,11 +16,12 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
     [SerializeField] float moveSpeed;
     [SerializeField] float flinchTime;
     [SerializeField] Transform target;
-
+    [SerializeField] float searchRange;
 
     bool flinch = false;
 
     HitPoint hitPoint;
+    [SerializeField] AudioSource hitAudio;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
 
     private void Update()
     {
+        if (searchRange < Vector3.Distance(target.transform.position, transform.position)) return;
+
         Quaternion lookRotation = Quaternion.LookRotation(target.transform.position - transform.position, Vector3.up);
 
         lookRotation.z = 0;
@@ -48,7 +51,11 @@ public class ProtoEnemyController : MonoBehaviour, IAttack
 
         if(other.TryGetComponent(out IAttack attack))
         {
-            hitPoint.TakeDamage(attack.Attack());
+            int damage = attack.Attack();
+            if(damage <= 0) { return; }
+            SoundManager.Instance.PlaySE(hitAudio, SoundSource.SE003_Hit, 0.0f);
+
+            hitPoint.TakeDamage(damage);
 
             Flinch();
         }

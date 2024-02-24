@@ -64,7 +64,7 @@
                     "type": "Value",
                     "id": "c16c41a3-35a0-447d-b20d-af15c11315d9",
                     "expectedControlType": "Vector2",
-                    "processors": "SnapDirection(digitalNormalized=true,snapDirectionCount=6)",
+                    "processors": "SnapDirection(digitalNormalized=true,snapDirectionCount=6),StickDeadzone(min=0.5)",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -385,30 +385,19 @@
                 },
                 {
                     "name": "",
-                    "id": "25e2227c-2103-4210-ac88-aa71508475d1",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ClothUIOpen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "67e120a3-5b4c-4c52-8f6b-aa765e1b1bfe",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ClothUIOpen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "96e3401b-0b1e-49c8-9693-f2d6a10b3d23",
                     "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClothUIOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0141b9cc-741f-4db3-8585-a630fd879b76",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

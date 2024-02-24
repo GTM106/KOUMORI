@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,30 +13,47 @@ public class ProtoClothUIController : MonoBehaviour
     [SerializeField] InputActionReference clothRotation;
 
     Canvas canvas;
+    [SerializeField] AudioSource clothOpenCloseAudio;
+    bool isOpen = false;
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
-        clothOpenAction.action.performed += Action_performed1;
-        clothCloseAction.action.performed += Action_performed;
+        clothOpenAction.action.performed += Action_performed;
+        canvas.enabled = false;
+        clothControl.action.Disable();
+        clothRotation.action.Disable();
     }
 
     private void OnDestroy()
     {
-        clothOpenAction.action.performed -= Action_performed1;
-        clothCloseAction.action.performed -= Action_performed;
-    }
-
-    private void Action_performed1(InputAction.CallbackContext obj)
-    {
-        canvas.enabled = true;
-        clothControl.action.Enable();
+        clothOpenAction.action.performed -= Action_performed;
     }
 
     private void Action_performed(InputAction.CallbackContext obj)
     {
+        if (isOpen) Close();
+        else Open();
+    }
+
+    private void Open()
+    {
+        isOpen = true;
+        canvas.enabled = true;
+        clothControl.action.Enable();
+
+        Time.timeScale = 0f;
+        SoundManager.Instance.PlaySE(clothOpenCloseAudio, SoundSource.SE005_ClothOpenClose, 0.0f);
+    }
+
+    private void Close()
+    {
+        isOpen = false;
+
         canvas.enabled = false;
+        Time.timeScale = 1f;
 
         clothControl.action.Disable();
         clothRotation.action.Disable();
+        SoundManager.Instance.PlaySE(clothOpenCloseAudio, SoundSource.SE005_ClothOpenClose, 0.0f);
     }
 }

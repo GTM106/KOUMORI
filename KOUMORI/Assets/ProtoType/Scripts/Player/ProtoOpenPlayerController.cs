@@ -33,12 +33,15 @@ public class ProtoOpenPlayerController : MonoBehaviour
     private bool _isGroundedPrev;
 
     bool _wasStickUp;
+    [SerializeField] AudioSource jumpAudio;
 
     /// <summary>
     /// 移動Action(PlayerInput側から呼ばれる)
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (context.phase != InputActionPhase.Performed) { _inputMove = Vector2.zero; return; }
+
         // 入力値を保持しておく
         _inputMove = context.ReadValue<Vector2>();
 
@@ -49,6 +52,7 @@ public class ProtoOpenPlayerController : MonoBehaviour
         if (_inputMove.y >= 0.5f)
         {
             if (_wasStickUp) { return; }
+            SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
 
             // 鉛直上向きに速度を与える
             _verticalVelocity = _jumpSpeed;
@@ -64,6 +68,7 @@ public class ProtoOpenPlayerController : MonoBehaviour
     {
         // ボタンが押された瞬間かつ着地している時だけ処理
         if (!context.performed || !_characterController.isGrounded) return;
+        SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
 
         // 鉛直上向きに速度を与える
         _verticalVelocity = _jumpSpeed;
