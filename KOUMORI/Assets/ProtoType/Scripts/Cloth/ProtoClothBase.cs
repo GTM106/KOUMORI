@@ -8,4 +8,6 @@ public abstract class ProtoClothBase : MonoBehaviour
     public int hitPoint;
     public string clothName;
     public string explanatoryNote;
+
+    public Sprite sprite;
 }

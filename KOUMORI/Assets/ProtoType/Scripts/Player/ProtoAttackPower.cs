@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class ProtoAttackPower : MonoBehaviour,IAttack
 
     bool isAttack = false;
     [SerializeField] AudioSource audioSource;
+
+    public event Action OnAttack;
 
     public int Attack()
     {
@@ -25,6 +28,7 @@ public class ProtoAttackPower : MonoBehaviour,IAttack
     {
         isAttack = true;
         SoundManager.Instance.PlaySE(audioSource, SoundSource.SE002_Attack, 0.0f);
+        OnAttack?.Invoke();
     }
 
     public void AttackEnd()
