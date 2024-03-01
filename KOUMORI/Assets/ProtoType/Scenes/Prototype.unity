@@ -946,14 +946,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 256113684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
+  m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
-  hitPoint: 2
-  clothName: Normal Cloth
-  explanatoryNote: Greeeen
-  sprite: {fileID: 0}
+  clothBase: {fileID: 1433215402}
 --- !u!1 &256905921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,14 +1321,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 309293067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
+  m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
-  hitPoint: 2
-  clothName: Normal Cloth
-  explanatoryNote: Yellow!!!
-  sprite: {fileID: 0}
+  clothBase: {fileID: 1827164709}
 --- !u!1 &311478870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,9 +1373,9 @@ MonoBehaviour:
   hitPoint: 1
   clothName: Jump
   explanatoryNote: jump power up!
-  sprite: {fileID: 0}
-  addJumpPowerOnClose: 0
-  addJumpPowerOnOpen: 0
+  sprite: {fileID: 21300000, guid: 521288fd595a6294f926d6bf65dc3605, type: 3}
+  addJumpPowerOnClose: 5
+  addJumpPowerOnOpen: 10
 --- !u!1 &327594267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,9 +1424,9 @@ MonoBehaviour:
   hitPoint: 1
   clothName: Dash
   explanatoryNote: Speed up!
-  sprite: {fileID: 0}
-  addSpeedOnClose: 0
-  addSpeedOnOpen: 0
+  sprite: {fileID: 21300000, guid: 893e137a2a5128844813e107a8de779d, type: 3}
+  addSpeedOnClose: 10
+  addSpeedOnOpen: 100
 --- !u!1 &463979769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1475,7 @@ MonoBehaviour:
   hitPoint: 1
   clothName: Hokotate
   explanatoryNote: shishiodoshi!
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 521288fd595a6294f926d6bf65dc3605, type: 3}
 --- !u!1 &502331844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,14 +1615,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 502331844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
+  m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
-  hitPoint: 2
-  clothName: Normal Cloth
-  explanatoryNote: SKY
-  sprite: {fileID: 0}
+  clothBase: {fileID: 934626547}
 --- !u!1 &544859130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,14 +1758,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 544859130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
+  m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
-  hitPoint: 2
-  clothName: Normal Cloth
-  explanatoryNote: Red...
-  sprite: {fileID: 0}
+  clothBase: {fileID: 311478872}
 --- !u!1 &614159495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,7 +3107,7 @@ MonoBehaviour:
   hitPoint: 3
   clothName: Heart
   explanatoryNote: life up!!
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 1e17ed00b289d314a94a3f9a0a82b3e2, type: 3}
 --- !u!1 &953616356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,10 +3820,10 @@ MonoBehaviour:
   hitPoint: 1
   clothName: Bullet
   explanatoryNote: u can shot a bullet
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 386bccc06b5f7aa4590dcfe0e59503e9, type: 3}
   bulletParameter:
-    lifeTime: 0
-    shotPower: 0
+    lifeTime: 10
+    shotPower: 10
   coolTime: 1
   bulletController: {fileID: 8033243104982088250, guid: e3dd15c37b62860409ef037f3b6623a3,
     type: 3}
@@ -4471,14 +4455,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1235053073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
+  m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
-  hitPoint: 2
-  clothName: Normal Cloth
-  explanatoryNote: Blue0000001
-  sprite: {fileID: 0}
+  clothBase: {fileID: 327594269}
 --- !u!1 &1236708460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,7 +4833,7 @@ MonoBehaviour:
   hitPoint: 0
   clothName: Normal
   explanatoryNote: normal
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: be5cccebdc6b0784596b7727bff7ccd8, type: 3}
 --- !u!1 &1433215400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,7 +4882,7 @@ MonoBehaviour:
   hitPoint: -3
   clothName: Haisui
   explanatoryNote: ...ushiroha,gakeda
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 53248c46e27cd9141bf84a3a21e53d7d, type: 3}
 --- !u!1 &1466047240
 GameObject:
   m_ObjectHideFlags: 0
@@ -4951,7 +4931,7 @@ MonoBehaviour:
   hitPoint: 1
   clothName: W Jump
   explanatoryNote: Can W jump.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 521288fd595a6294f926d6bf65dc3605, type: 3}
 --- !u!1 &1504616044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5586,12 +5566,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clothBaseList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1353997945}
+  - {fileID: 1353997945}
+  - {fileID: 1353997945}
+  - {fileID: 1353997945}
+  - {fileID: 1353997945}
+  - {fileID: 1353997945}
 --- !u!82 &1818545669
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5737,7 +5717,7 @@ MonoBehaviour:
   hitPoint: 0
   clothName: Attack
   explanatoryNote: power up!
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d737abdbce9df0d4b9aa59a8621a9691, type: 3}
 --- !u!1 &1880266193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6386,14 +6366,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2127585070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a87d80616dde84c898997ec34d2135, type: 3}
+  m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
-  hitPoint: 2
-  clothName: Normal Cloth
-  explanatoryNote: Blue1:))
-  sprite: {fileID: 0}
+  clothBase: {fileID: 1194563236}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

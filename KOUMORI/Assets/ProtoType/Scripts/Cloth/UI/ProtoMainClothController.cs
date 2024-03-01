@@ -43,5 +43,7 @@ public class ProtoMainClothController : MonoBehaviour
     {
         clothImages[index].sprite = sprite;
         FindAnyObjectByType<ProtoClothController>().AddCloth(index, protoClothBase);
+
+
     }
 }

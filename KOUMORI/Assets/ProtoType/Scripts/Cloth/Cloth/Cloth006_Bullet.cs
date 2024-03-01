@@ -17,12 +17,10 @@ public class Cloth006_Bullet : ProtoClothBase
     private void Awake()
     {
         protoAttackPower = FindAnyObjectByType<ProtoAttackPower>();
-        protoAttackPower.OnAttack += OnAttack;
     }
 
     private void OnDestroy()
     {
-        protoAttackPower.OnAttack -= OnAttack;
     }
 
     private void FixedUpdate()
@@ -35,8 +33,21 @@ public class Cloth006_Bullet : ProtoClothBase
     {
         if (currentCoolTime > 0f) return;
         var obj = Instantiate(bulletController);
+        obj.transform.position = protoAttackPower.transform.position + protoAttackPower.transform.forward * 5f;
         obj.Fire(bulletParameter);
 
         currentCoolTime = coolTime;
+    }
+
+    public override void OnMount()
+    {
+        protoAttackPower.OnAttack += OnAttack;
+
+    }
+
+    public override void OnRemoval()
+    {
+        protoAttackPower.OnAttack -= OnAttack;
+
     }
 }

@@ -10,4 +10,7 @@ public abstract class ProtoClothBase : MonoBehaviour
     public string explanatoryNote;
 
     public Sprite sprite;
+
+    public abstract void OnMount();
+    public abstract void OnRemoval();
 }

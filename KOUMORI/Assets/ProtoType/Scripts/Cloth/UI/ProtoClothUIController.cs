@@ -18,7 +18,7 @@ public class ProtoClothUIController : MonoBehaviour
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
-        clothOpenAction.action.performed += Action_performed;
+        clothOpenAction.action.started+= Action_performed;
         canvas.enabled = false;
         clothControl.action.Disable();
         clothRotation.action.Disable();
@@ -31,6 +31,8 @@ public class ProtoClothUIController : MonoBehaviour
 
     private void Action_performed(InputAction.CallbackContext obj)
     {
+        print("called");
+
         if (isOpen) Close();
         else Open();
     }

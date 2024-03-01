@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,13 +41,20 @@ public class ProtoOpenPlayerController : MonoBehaviour
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!enabled) return;
+
         if (context.phase != InputActionPhase.Performed) { _inputMove = Vector2.zero; return; }
 
         // 入力値を保持しておく
         _inputMove = context.ReadValue<Vector2>();
 
         // ボタンが押された瞬間かつ着地している時だけ処理
-        if (!context.performed || !_characterController.isGrounded) return;
+        if (!context.performed) return;
+        if (!_characterController.isGrounded)
+        {
+            //二段ジャンプの許可
+            if (ProtoPlayerController.jumpCount >= ProtoPlayerController.maxJumpCount) return;
+        }
 
         //ジャンプ
         if (_inputMove.y >= 0.5f)
@@ -57,6 +65,8 @@ public class ProtoOpenPlayerController : MonoBehaviour
             // 鉛直上向きに速度を与える
             _verticalVelocity = _jumpSpeed;
             _wasStickUp = true;
+            ProtoPlayerController.jumpCount++;
+
         }
         else { _wasStickUp = false; }
     }
@@ -67,8 +77,14 @@ public class ProtoOpenPlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // ボタンが押された瞬間かつ着地している時だけ処理
-        if (!context.performed || !_characterController.isGrounded) return;
+        if (!context.performed) return;
+        if (!_characterController.isGrounded)
+        {
+            //二段ジャンプの許可
+            if (ProtoPlayerController.jumpCount >=ProtoPlayerController.maxJumpCount) return;
+        }
         SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
+        ProtoPlayerController.jumpCount++;
 
         // 鉛直上向きに速度を与える
         _verticalVelocity = _jumpSpeed;
@@ -89,6 +105,11 @@ public class ProtoOpenPlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_characterController.isGrounded)
+        {
+            ProtoPlayerController.jumpCount = 0;
+        }
+
         var isGrounded = _characterController.isGrounded;
 
         if (isGrounded && !_isGroundedPrev)
@@ -147,5 +168,15 @@ public class ProtoOpenPlayerController : MonoBehaviour
             // オブジェクトの回転を更新
             _modelTransform.rotation = Quaternion.Euler(0, angleY, 0);
         }
+    }
+
+    public void AddJumpPower(float power)
+    {
+        _jumpSpeed += power;
+    }    
+    
+    public void AddMoveSpeed(float power)
+    {
+        _speed += power;
     }
 }
