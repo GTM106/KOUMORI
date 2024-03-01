@@ -1336,7 +1336,7 @@ GameObject:
   - component: {fileID: 311478871}
   - component: {fileID: 311478872}
   m_Layer: 0
-  m_Name: Cloth004
+  m_Name: Cloth004_Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 327594268}
   - component: {fileID: 327594269}
   m_Layer: 0
-  m_Name: Cloth003
+  m_Name: Cloth003_Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 463979770}
   - component: {fileID: 463979771}
   m_Layer: 0
-  m_Name: Cloth007
+  m_Name: Cloth007_Hokotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3070,7 +3070,7 @@ GameObject:
   - component: {fileID: 934626546}
   - component: {fileID: 934626547}
   m_Layer: 0
-  m_Name: Cloth002
+  m_Name: Cloth002_Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3783,7 +3783,7 @@ GameObject:
   - component: {fileID: 1194563235}
   - component: {fileID: 1194563236}
   m_Layer: 0
-  m_Name: Cloth006
+  m_Name: Cloth006_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4796,7 +4796,7 @@ GameObject:
   - component: {fileID: 1353997944}
   - component: {fileID: 1353997945}
   m_Layer: 0
-  m_Name: Cloth000
+  m_Name: Cloth000_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4845,7 +4845,7 @@ GameObject:
   - component: {fileID: 1433215401}
   - component: {fileID: 1433215402}
   m_Layer: 0
-  m_Name: Cloth005
+  m_Name: Cloth005_Haisui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 1466047241}
   - component: {fileID: 1466047242}
   m_Layer: 0
-  m_Name: Cloth008
+  m_Name: Cloth008_WJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5680,7 +5680,7 @@ GameObject:
   - component: {fileID: 1827164708}
   - component: {fileID: 1827164709}
   m_Layer: 0
-  m_Name: Cloth001
+  m_Name: Cloth001_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6369,7 +6369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clothBase: {fileID: 1194563236}
+  clothBase: {fileID: 1466047242}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
