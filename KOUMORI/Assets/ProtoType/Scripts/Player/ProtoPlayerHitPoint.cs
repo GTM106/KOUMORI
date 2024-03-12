@@ -29,13 +29,35 @@ public class ProtoPlayerHitPoint : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Ground")) return;
-        if(invincible) { return; }
+        if (invincible) { return; }
         if (hitPoint.IsDead()) return;
         hitPoint.TakeDamage(1);
         SoundManager.Instance.PlaySE(hitAudio, SoundSource.SE003_Hit, 0.0f);
         if (hitPoint.IsDead()) return;
 
         Invincible();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out IAttack attack))
+        {
+            //Ž©”š‚È‚µ
+            if (other.CompareTag("Player")) return;
+
+            if (invincible) { return; }
+            if (hitPoint.IsDead()) return;
+
+            int damage = attack.Attack();
+
+            hitPoint.TakeDamage(damage);
+            SoundManager.Instance.PlaySE(hitAudio, SoundSource.SE003_Hit, 0.0f);
+            if (hitPoint.IsDead()) return;
+
+            Invincible();
+
+        }
+
     }
 
     private async void Invincible()
@@ -47,7 +69,7 @@ public class ProtoPlayerHitPoint : MonoBehaviour
 
         while (time <= _invincibleDuration)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(_invincibleDuration/10f),false,PlayerLoopTiming.FixedUpdate);
+            await UniTask.Delay(TimeSpan.FromSeconds(_invincibleDuration / 10f), false, PlayerLoopTiming.FixedUpdate);
             time += _invincibleDuration / 10f;
 
             _renderer.enabled ^= true;
@@ -63,7 +85,7 @@ public class ProtoPlayerHitPoint : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(damage < 0)
+        if (damage < 0)
         {
             hitPoint.TakeDamage(damage);
             return;
