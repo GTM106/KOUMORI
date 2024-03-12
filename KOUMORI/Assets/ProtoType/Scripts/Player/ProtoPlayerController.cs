@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +37,9 @@ public class ProtoPlayerController : MonoBehaviour
 
     bool _wasStickUp;
 
+    public static int jumpCount = 0;
+    public static int maxJumpCount = 1;
+
     bool cooldown = false;
     [SerializeField] AudioSource jumpAudio;
 
@@ -44,6 +48,8 @@ public class ProtoPlayerController : MonoBehaviour
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!enabled) return;
+
         if (context.phase != InputActionPhase.Performed) { _inputMove = Vector2.zero; return; }
         if (cooldown) { return; }
 
@@ -51,13 +57,18 @@ public class ProtoPlayerController : MonoBehaviour
         _inputMove = context.ReadValue<Vector2>();
 
         // ボタンが押された瞬間かつ着地している時だけ処理
-        if (!context.performed || !_characterController.isGrounded) return;
+        if (!context.performed) return;
+        if (!_characterController.isGrounded)
+        {
+            //二段ジャンプの許可
+            if (jumpCount >= maxJumpCount) return;
+        }
 
         //ジャンプ
         if (_inputMove.y >= 0.5f)
         {
             if (_wasStickUp) { return; }
-
+            jumpCount++;
             // 鉛直上向きに速度を与える
             _verticalVelocity = _jumpSpeed;
             SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
@@ -72,7 +83,15 @@ public class ProtoPlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // ボタンが押された瞬間かつ着地している時だけ処理
-        if (!context.performed || !_characterController.isGrounded) return;
+        if (!context.performed) return;
+        if (!_characterController.isGrounded)
+        {
+            //二段ジャンプの許可
+            if (jumpCount >= maxJumpCount) return;
+        }
+
+        jumpCount++;
+
         SoundManager.Instance.PlaySE(jumpAudio, SoundSource.SE001_Jump, 0.0f);
 
         // 鉛直上向きに速度を与える
@@ -95,6 +114,11 @@ public class ProtoPlayerController : MonoBehaviour
     private void Update()
     {
         Move();
+
+        if (_characterController.isGrounded)
+        {
+            jumpCount = 0;
+        }
     }
 
     private void Move()
@@ -170,5 +194,20 @@ public class ProtoPlayerController : MonoBehaviour
         await UniTask.WaitForSeconds(_attackCoolTime, false, PlayerLoopTiming.FixedUpdate, token);
         cooldown = false;
 
+    }
+
+    public void AddJumpPower(float power)
+    {
+        _jumpSpeed += power;
+    }
+
+    internal void AddMoveSpeed(float addSpeed)
+    {
+        _speed += addSpeed;
+    }
+
+    public void AddMaxJumpCount(int count)
+    {
+        maxJumpCount += count;
     }
 }

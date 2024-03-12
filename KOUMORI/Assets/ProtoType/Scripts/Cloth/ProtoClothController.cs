@@ -32,6 +32,8 @@ public class ProtoClothController : MonoBehaviour
         {
             hitPoint.Damage(clothBaseList[index].hitPoint);
             power.AddPower(-clothBaseList[index].attackPower);
+
+            clothBaseList[index].OnRemoval();
         }
 
         if (cloth == null) return;
@@ -39,6 +41,8 @@ public class ProtoClothController : MonoBehaviour
         clothBaseList[index] = cloth;
         hitPoint.Damage(-cloth.hitPoint);
         power.AddPower(cloth.attackPower);
+        clothBaseList[index].OnMount();
+
     }
 
     public void RemoveCloth(ProtoClothBase cloth)

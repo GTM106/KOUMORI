@@ -67,8 +67,8 @@ public class ProtoSubClothController : MonoBehaviour
             //print("sa : " + sa);
             //print("num : " + num);
 
-            Sprite sp = images[(index - num) % max].sprite;
-            protoMainClothController.ChangeSprite(sp, images[(index - num) % max].GetComponent<ProtoClothBase>());
+            Sprite sp = images[(index - num) % max].GetComponent<ProtoCloth>().clothBase.sprite;
+            protoMainClothController.ChangeSprite(sp, images[(index - num) % max].GetComponent<ProtoCloth>().clothBase);
             nameText.text = "";
             noteText.text = "";
 
@@ -85,14 +85,13 @@ public class ProtoSubClothController : MonoBehaviour
             int num = (int)(sa / V % max);
             //print("sa : " + sa);
             //print("num : " + num);
-            ProtoClothBase cloth = images[(index - num) % max].GetComponent<ProtoClothBase>();
+            ProtoClothBase cloth = images[(index - num) % max].GetComponent<ProtoCloth>().clothBase;
             if(cloth!= null)
             {
                 string name = cloth.clothName;
                 string explanatoryNote = cloth.explanatoryNote;
                 nameText.text = name;
                 noteText.text = explanatoryNote;
-
             }
 
             //print("dig : " + degree + "\nfirst : " + first);
