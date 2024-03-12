@@ -531,13 +531,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e15781a2c6e13b4aa1b273c65aab005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6.94
-  _jumpSpeed: 1.68
-  _gravity: 15
+  _speed: 7
+  _jumpSpeed: 15
+  _gravity: 35
   _fallSpeed: 10
   _initFallSpeed: 2
   _targetCamera: {fileID: 1181896026}
-  _attackCoolTime: 1
+  _attackCoolTime: 0.3
   _modelTransform: {fileID: 759014056}
   jumpAudio: {fileID: 206994320}
 --- !u!114 &118395917
@@ -566,10 +566,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defb3f8a93bb3ca42b11983a3b197187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
-  _jumpSpeed: 7
-  _gravity: 15
-  _fallSpeed: 10
+  _speed: 5
+  _jumpSpeed: 15
+  _gravity: 35
+  _fallSpeed: 2
   _initFallSpeed: 2
   _targetCamera: {fileID: 1181896026}
   _modelTransform: {fileID: 759014056}
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initHP: 5
-  maxHP: 2213
+  maxHP: 2048
   _invincibleDuration: 1
   _renderer: {fileID: 759014058}
   hitAudio: {fileID: 1133065335}
@@ -1377,8 +1377,8 @@ MonoBehaviour:
   clothName: "\u8DF3\u8E8D\u306E\u5E03\u5730"
   explanatoryNote: "\u30B8\u30E3\u30F3\u30D7\u529B\u304C\u4E0A\u304C\u308B"
   sprite: {fileID: 21300000, guid: 521288fd595a6294f926d6bf65dc3605, type: 3}
-  addJumpPowerOnClose: 5
-  addJumpPowerOnOpen: 10
+  addJumpPowerOnClose: 3
+  addJumpPowerOnOpen: 3
 --- !u!1 &327594267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,8 +1428,8 @@ MonoBehaviour:
   clothName: "\u52A0\u901F\u306E\u5E03\u5730"
   explanatoryNote: "\u79FB\u52D5\u901F\u5EA6\u304C\u4E0A\u304C\u308B"
   sprite: {fileID: 21300000, guid: 893e137a2a5128844813e107a8de779d, type: 3}
-  addSpeedOnClose: 10
-  addSpeedOnOpen: 100
+  addSpeedOnClose: 5
+  addSpeedOnOpen: 5
 --- !u!1 &463979769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,7 +3710,7 @@ Camera:
   far clip plane: 1000
   field of view: 80
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3735,7 +3735,7 @@ Transform:
   m_GameObject: {fileID: 1181896024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.86, z: 3.39}
+  m_LocalPosition: {x: 0, y: 4.07, z: 3.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4330,7 +4330,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 80
-    OrthographicSize: 5
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4356,7 +4356,7 @@ Transform:
   m_GameObject: {fileID: 1234711243}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0.78999996, z: -3.39}
+  m_LocalPosition: {x: 0, y: 3, z: -3.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
