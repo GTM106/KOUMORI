@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Cloth007_Hokotate : ProtoClothBase
 {
+    [SerializeField] float _attackPowerDecayMultiplier;
+    [SerializeField] float _knockbackForce;
+
+    ProtoUmbrellaHittable hit;
+
+    private void Awake()
+    {
+        hit = FindAnyObjectByType<ProtoUmbrellaHittable>();
+    }
+
     public override void OnMount()
     {
-        print("id_007「攻防一体の布地」は未実装です");
+        hit.SetHokotate(1, _attackPowerDecayMultiplier);
     }
 
     public override void OnRemoval()
     {
-        print("id_007「攻防一体の布地」は未実装です");
+        hit.SetHokotate(-1, _attackPowerDecayMultiplier);
     }
 }

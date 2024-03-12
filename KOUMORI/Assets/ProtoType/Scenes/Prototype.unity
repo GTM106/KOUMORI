@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd96f6c444a257449bbfceac874a54e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clothBase: {fileID: 1827164709}
+  clothBase: {fileID: 463979771}
 --- !u!1 &311478870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,6 +1478,8 @@ MonoBehaviour:
   clothName: Hokotate
   explanatoryNote: shishiodoshi!
   sprite: {fileID: 21300000, guid: 521288fd595a6294f926d6bf65dc3605, type: 3}
+  _attackPowerDecayMultiplier: 0.5
+  _knockbackForce: 0
 --- !u!1 &502331844
 GameObject:
   m_ObjectHideFlags: 0

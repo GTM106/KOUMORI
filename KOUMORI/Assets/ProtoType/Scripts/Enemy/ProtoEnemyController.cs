@@ -26,10 +26,11 @@ public class ProtoEnemyController : MonoBehaviour, IAttack, IUmbrellaHittable
 
     HitPoint hitPoint;
     [SerializeField] AudioSource hitAudio;
-
+    float defaultSpeed;
     private void Awake()
     {
         hitPoint = new(initHP, maxHitPoint, OnDead);
+        defaultSpeed = moveSpeed;
     }
 
     private void Update()
@@ -94,13 +95,13 @@ public class ProtoEnemyController : MonoBehaviour, IAttack, IUmbrellaHittable
     {
         if (isStan) return; isStan = true;
 
-        moveSpeed = -moveSpeed* _stanRate;
+        moveSpeed = -defaultSpeed * _stanRate;
 
         await UniTask.Delay(System.TimeSpan.FromSeconds(_stanTime), false, PlayerLoopTiming.FixedUpdate);
 
         isStan = false;
-        
-        moveSpeed = -moveSpeed/ _stanRate;
+
+        moveSpeed = defaultSpeed;
     }
 
     public void OnExit()
